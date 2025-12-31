@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Story 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
+    font-family:'Dancing Script',cursive;
+    color:#fff;
+}
+
+/* vignette */
+body::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle,transparent 40%,rgba(0,0,0,0.65));
+    pointer-events:none;
+}
+
+/* bubbles */
+.bubble{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    filter:blur(2px);
+    animation:float 25s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(110vh);}
+    to{transform:translateY(-20vh);}
+}
+
+/* snow */
+.snow{
+    position:absolute;
+    top:-10px;
+    font-size:18px;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+
+/* BIG decorations */
+.tree{
+    position:absolute;
+    bottom:-20px;
+    font-size:160px;
+}
+.tree.left{left:20px;}
+.tree.right{right:20px;}
+
+.snowman{
+    position:absolute;
+    bottom:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:150px;
+}
+
+/* balloons */
+.balloon{
+    position:absolute;
+    bottom:-60px;
+    font-size:50px;
+    animation:balloon 9s linear infinite;
+}
+@keyframes balloon{
+    to{transform:translateY(-120vh);}
+}
+
+/* sunflowers */
+.sunflower{
+    position:absolute;
+    bottom:-25px;
+    font-size:75px;
+    animation:sway 5s ease-in-out infinite;
+}
+@keyframes sway{
+    0%,100%{transform:rotate(0deg);}
+    50%{transform:rotate(3deg);}
+}
+
+/* glass card */
+.card{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    padding:50px;
+    max-width:900px;
+    width:90%;
+    background:rgba(255,255,255,0.18);
+    backdrop-filter:blur(14px);
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 0 45px rgba(255,255,255,0.25);
+    transition:1s;
+    z-index:5;
+}
+.hidden{
+    opacity:0;
+    pointer-events:none;
+    filter:blur(12px);
+}
+
+h1{
+    font-family:'Playfair Display',serif;
+    font-size:3.5rem;
+}
+p{
+    margin-top:25px;
+    font-size:1.5rem;
+    line-height:1.9;
+}
+
+button{
+    margin:20px;
+    padding:16px 44px;
+    border:none;
+    border-radius:50px;
+    font-size:1.2rem;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff69b4,#ffd700);
+    color:#fff;
+    box-shadow:0 0 28px rgba(255,215,0,0.6);
+}
+
+/* fireworks */
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    box-shadow:
+     0 0 #fff,
+     -22px 0 #ffd700,
+     22px 0 #ff69b4,
+     0 -22px #ffd700,
+     0 22px #ff69b4;
+    animation:explode 1.5s ease-out infinite;
+}
+@keyframes explode{
+    from{transform:scale(0);opacity:1;}
+    to{transform:scale(2);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- BIG background decorations -->
+<div class="tree left">🎄</div>
+<div class="tree right">🎄</div>
+<div class="snowman">⛄</div>
+
+<!-- Scene 1 -->
+<div class="card" id="scene1">
+    <h1>21 July 2025</h1>
+    <button onclick="goStory()">vooh 🔥</button>
+</div>
+
+<!-- Scene 2 -->
+<div class="card hidden" id="scene2">
+    <h1>The story begins here</h1>
+    <p>
+        heyy dugguuu i am thankfull that i have u in my life , on 21 july we started talking randomly not knowing how this would be going for us , never knowing that i would love someone this much , i would care for someone , get attached to someone but then a beuatiful and kind soul enters my life your charm brings joy to my life being with u feels like now i have my other half its been 5 months now we have seen beautiful and sad days together but we stood up aginst all odds and here we are together and promising that we will be together for the rest of our lives  i love you my babbyy , these 5 months are the most beautful months of my life , being with u made me realise what actually falling in love feels like , thank you for everything and love you forever and also happy new year duggu , we both are gonna enjoy 2026 together standing by each others side while with ups and downs  always with u my lovee , we will get married sooonnnnn .........
+    </p>
+    <button onclick="goNewYear()">Continue 💖</button>
+</div>
+
+<!-- Scene 3: New Year Wish -->
+<div class="card hidden" id="sceneNY">
+    <h1>🎆 Happy New Year 2026 🎆</h1>
+    <p>
+        My love 💖,<br>
+        A brand new year begins, and I want to start it with you.
+        Through ups and downs, smiles and tears,
+        I promise to stand by your side always.
+        Let’s make 2026 our year — together, forever ❄️✨
+    </p>
+    <button onclick="goProposal()">One more thing… 💍</button>
+</div>
+
+<!-- Scene 4: Proposal -->
+<div class="card hidden" id="scene3">
+    <h1>Will you be my dugguuu forever ??? 💍</h1>
+    <button onclick="yesClick()">YES 💖</button>
+    <button onclick="noClick()">NO 😏</button>
+</div>
+
+<script>
+/* bubbles */
+for(let i=0;i<25;i++){
+    let b=document.createElement("div");
+    b.className="bubble";
+    b.style.width=b.style.height=(50+Math.random()*80)+"px";
+    b.style.left=Math.random()*100+"vw";
+    b.style.animationDuration=(20+Math.random()*20)+"s";
+    document.body.appendChild(b);
+}
+
+/* sunflowers */
+for(let i=0;i<7;i++){
+    let s=document.createElement("div");
+    s.className="sunflower";
+    s.innerHTML="🌻";
+    s.style.left=i*14+"vw";
+    document.body.appendChild(s);
+}
+
+/* balloons */
+setInterval(()=>{
+    let b=document.createElement("div");
+    b.className="balloon";
+    b.innerHTML="🎈";
+    b.style.left=Math.random()*100+"vw";
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),9000);
+},1300);
+
+/* snow */
+setInterval(()=>{
+    let s=document.createElement("div");
+    s.className="snow";
+    s.innerHTML="❄️";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=(5+Math.random()*5)+"s";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),10000);
+},250);
+
+/* navigation */
+function goStory(){
+    scene1.classList.add("hidden");
+    scene2.classList.remove("hidden");
+}
+function goNewYear(){
+    scene2.classList.add("hidden");
+    sceneNY.classList.remove("hidden");
+}
+function goProposal(){
+    sceneNY.classList.add("hidden");
+    scene3.classList.remove("hidden");
+}
+
+/* proposal logic */
+function yesClick(){
+    alert("YAYYYYY 💖🎉 FOREVER TOGETHER 💍");
+    setInterval(()=>{
+        let f=document.createElement("div");
+        f.className="firework";
+        f.style.left=Math.random()*100+"vw";
+        f.style.top=Math.random()*60+"vh";
+        document.body.appendChild(f);
+        setTimeout(()=>f.remove(),1500);
+    },700);
+}
+function noClick(){
+    alert("Its mandatory to click YES 😤💖\nYou dont have any other option dedhhh 😏");
+}
+</script>
+
+</body>
+</html>
